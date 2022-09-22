@@ -1,5 +1,6 @@
 package org.teachplats.dao;
 
+
 import org.teachplats.connection.ConnectionDBCP2;
 import org.teachplats.model.State;
 import org.testng.Assert;
@@ -10,17 +11,17 @@ import java.sql.Connection;
 
 public class StateDAOTest {
     Connection connection = null;
-    StateDAO stateDAO = null;
+    org.teachplats.dao.StateDAO stateDAO = null;
 
     State state = null;
 
-    @BeforeClass
+    //@BeforeClass
     public void setUpBefore() {
         connection = new ConnectionDBCP2().getConnection();
-        stateDAO = new StateDAO(connection);
+        stateDAO = new org.teachplats.dao.StateDAO(connection);
     }
 
-    @Test
+   // @Test
     public void createTest() {
         state = new State("Buenos Aires", 2l);
         stateDAO.create(state);

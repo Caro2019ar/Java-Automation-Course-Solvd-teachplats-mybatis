@@ -1,8 +1,10 @@
 package org.teachplats.connection;
 
 import org.apache.commons.dbcp2.BasicDataSource;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 import org.teachplats.connection.mysql_jdbc.AbstractMySqlJDBC;
 
 import java.sql.Connection;

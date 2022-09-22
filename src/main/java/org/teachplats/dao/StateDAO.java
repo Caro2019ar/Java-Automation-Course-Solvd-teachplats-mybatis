@@ -1,12 +1,12 @@
 package org.teachplats.dao;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.teachplats.model.State;
 
 import java.sql.*;
 
-public class StateDAO  extends BaseDAO<State> implements IStateDAO{
+public class StateDAO extends BaseDAO<State> implements IStateDAO {
 
     private final static Logger logger = LogManager.getLogger(StateDAO.class);
     private Connection connection;
@@ -17,7 +17,7 @@ public class StateDAO  extends BaseDAO<State> implements IStateDAO{
     }
 
     @Override
-    public void create(State state)  {
+    public void create(State state) {
         try (PreparedStatement pstm = connection.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS)) {
             pstm.setString(1, state.getName());
             pstm.setLong(2, state.getCountryId());

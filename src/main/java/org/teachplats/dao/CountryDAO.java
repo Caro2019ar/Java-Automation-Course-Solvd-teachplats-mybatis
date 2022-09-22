@@ -1,7 +1,8 @@
 package org.teachplats.dao;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.teachplats.exception.ResourceNotFoundException;
 import org.teachplats.model.Country;
 
@@ -85,7 +86,7 @@ public class CountryDAO extends BaseDAO<Country> implements ICountryDAO {
         }
     }
 
-    public List<Country> getAll()  {
+    public List<Country> getAll() {
         List<Country> list = new ArrayList<>();
         try (PreparedStatement pstm = connection.prepareStatement(SELECTALL)) {
             pstm.execute();
@@ -97,10 +98,10 @@ public class CountryDAO extends BaseDAO<Country> implements ICountryDAO {
                     list.add(country);
                 }
             }
-        logger.info(list);
-        return list;
+            logger.info(list);
+            return list;
         } catch (SQLException ex) {
-            //logger.warn(e.getMessage() + " Could not list all countries. ");
+            //logger.warn(ex.getMessage() + " Could not list all countries. ");
             throw new RuntimeException(" Could not list all countries. ");
         }
     }
