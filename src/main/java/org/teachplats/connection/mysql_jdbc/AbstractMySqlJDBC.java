@@ -21,7 +21,7 @@ public abstract  class AbstractMySqlJDBC {
 
         try {
 
-            FileInputStream  in = new FileInputStream(System.getProperty("src/main/resources/database.properties"));
+            FileInputStream  in = new FileInputStream(System.getProperty("src/main/resources/db.properties"));
             prop.load(in);
             in.close();
 

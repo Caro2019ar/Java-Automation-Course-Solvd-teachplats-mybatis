@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-
+    <properties resource="db.properties"/>
     <typeAliases>
         <typeAlias alias = "User" type = "org.teachplats.model.User"/>
         <typeAlias alias = "Country" type = "org.teachplats.model.Country"/>
@@ -15,10 +15,10 @@
             <transactionManager type = "JDBC"/>
 
             <dataSource type = "POOLED">
-                <property name = "driver" value = "com.mysql.jdbc.Driver"/>
-                <property name = "url" value = "jdbc:mysql://localhost:3306/teachdb?useSSL=false&amp;allowPublicKeyRetrieval=true"/>
-                <property name = "username" value = "root"/>
-                <property name = "password" value = "root"/>
+                <property name = "driver" value = "${db.driver}"/>
+                <property name = "url" value = "${db.url}"/>
+                <property name = "username" value = "${db.username}"/>
+                <property name = "password" value = "${db.password}"/>
             </dataSource>
 
         </environment>
