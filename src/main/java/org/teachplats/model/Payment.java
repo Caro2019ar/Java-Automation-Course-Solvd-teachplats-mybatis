@@ -6,16 +6,22 @@ public class Payment {
     private Long id;
     private Date payDate;
     private Double value;
-    private Long paymethodId;
+    private PaymentMethod paymentMethod;
 
     public Payment() {
     }
 
-    public Payment(Long id, Date payDate, Double value, Long paymethodId) {
+    public Payment(Date payDate, Double value, PaymentMethod paymentMethod) {
+        this.payDate = payDate;
+        this.value = value;
+        this.paymentMethod = paymentMethod;
+    }
+
+    public Payment(Long id, Date payDate, Double value, PaymentMethod paymentMethod) {
         this.id = id;
         this.payDate = payDate;
         this.value = value;
-        this.paymethodId = paymethodId;
+        this.paymentMethod = paymentMethod;
     }
 
     public Long getId() {
@@ -42,12 +48,12 @@ public class Payment {
         this.value = value;
     }
 
-    public Long getPaymethodId() {
-        return paymethodId;
+    public PaymentMethod getPaymentMethod() {
+        return paymentMethod;
     }
 
-    public void setPaymethodId(Long paymethodId) {
-        this.paymethodId = paymethodId;
+    public void setPaymentMethod(PaymentMethod paymentMethod) {
+        this.paymentMethod = paymentMethod;
     }
 
     @Override
@@ -56,7 +62,7 @@ public class Payment {
                 "id=" + id +
                 ", payDate=" + payDate +
                 ", value=" + value +
-                ", paymethodId=" + paymethodId +
+                ", paymentMethod=" + paymentMethod +
                 '}';
     }
 }

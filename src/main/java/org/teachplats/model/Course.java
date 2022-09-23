@@ -1,19 +1,32 @@
 package org.teachplats.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Course {
     private Long id;
     private String description;
     private String version;
-    private Long instrumentId;
+    private Instrument instrument;
+    private List<Evaluation> listEvaluations;
+
 
     public Course() {
     }
 
-    public Course(Long id, String description, String version, Long instrumentId) {
+    public Course(String description, String version, Instrument instrument) {
+        this.description = description;
+        this.version = version;
+        this.instrument = instrument;
+        this.listEvaluations = new ArrayList<>();
+    }
+
+    public Course(Long id, String description, String version, Instrument instrument) {
         this.id = id;
         this.description = description;
         this.version = version;
-        this.instrumentId = instrumentId;
+        this.instrument = instrument;
+        this.listEvaluations = new ArrayList<>();
     }
 
     public Long getId() {
@@ -40,12 +53,20 @@ public class Course {
         this.version = version;
     }
 
-    public Long getInstrumentId() {
-        return instrumentId;
+    public Instrument getInstrument() {
+        return instrument;
     }
 
-    public void setInstrumentId(Long instrumentId) {
-        this.instrumentId = instrumentId;
+    public void setInstrument(Instrument instrument) {
+        this.instrument = instrument;
+    }
+
+    public List<Evaluation> getListEvaluations() {
+        return listEvaluations;
+    }
+
+    public void setListEvaluations(List<Evaluation> listEvaluations) {
+        this.listEvaluations = listEvaluations;
     }
 
     @Override
@@ -54,7 +75,8 @@ public class Course {
                 "id=" + id +
                 ", description='" + description + '\'' +
                 ", version='" + version + '\'' +
-                ", instrumentId=" + instrumentId +
+                ", instrument=" + instrument +
+                ", listEvaluations=" + listEvaluations +
                 '}';
     }
 }

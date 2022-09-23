@@ -7,17 +7,24 @@ public class File {
     private String description;
     private Double size;
     private Date fileDate;
-    private Long filetypeId;
+    private Filetype filetype;
 
     public File() {
     }
 
-    public File(Long id, String description, Double size, Date fileDate, Long filetypeId) {
+    public File(String description, Double size, Date fileDate, Filetype filetype) {
+        this.description = description;
+        this.size = size;
+        this.fileDate = fileDate;
+        this.filetype = filetype;
+    }
+
+    public File(Long id, String description, Double size, Date fileDate, Filetype filetype) {
         this.id = id;
         this.description = description;
         this.size = size;
         this.fileDate = fileDate;
-        this.filetypeId = filetypeId;
+        this.filetype = filetype;
     }
 
     public Long getId() {
@@ -52,12 +59,12 @@ public class File {
         this.fileDate = fileDate;
     }
 
-    public Long getFiletypeId() {
-        return filetypeId;
+    public Filetype getFiletype() {
+        return filetype;
     }
 
-    public void setFiletypeId(Long filetypeId) {
-        this.filetypeId = filetypeId;
+    public void setFiletype(Filetype filetype) {
+        this.filetype = filetype;
     }
 
     @Override
@@ -67,7 +74,7 @@ public class File {
                 ", description='" + description + '\'' +
                 ", size=" + size +
                 ", fileDate=" + fileDate +
-                ", filetypeId=" + filetypeId +
+                ", filetype=" + filetype +
                 '}';
     }
 }

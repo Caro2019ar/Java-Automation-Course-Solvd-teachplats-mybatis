@@ -1,24 +1,37 @@
 package org.teachplats.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Classes {
 
     private Long id;
     private String description;
-    private Date clasDate;
-    private Long remotePresentId;
-    private Long courseId;
+    private Date classDate;
+    private RemotePresent remotePresent;
+    private Course course;
+    private List<File> listFiles;
 
     public Classes() {
     }
 
-    public Classes(Long id, String description, Date clasDate, Long remotePresentId, Long courseId) {
+
+    public Classes(String description, Date classDate, RemotePresent remotePresent, Course course) {
+        this.description = description;
+        this.classDate = classDate;
+        this.remotePresent = remotePresent;
+        this.course = course;
+        this.listFiles = new ArrayList<>();
+    }
+
+    public Classes(Long id, String description, Date classDate, RemotePresent remotePresent, Course course) {
         this.id = id;
         this.description = description;
-        this.clasDate = clasDate;
-        this.remotePresentId = remotePresentId;
-        this.courseId = courseId;
+        this.classDate = classDate;
+        this.remotePresent = remotePresent;
+        this.course = course;
+        this.listFiles = new ArrayList<>();
     }
 
     public Long getId() {
@@ -37,28 +50,36 @@ public class Classes {
         this.description = description;
     }
 
-    public Date getClasDate() {
-        return clasDate;
+    public Date getClassDate() {
+        return classDate;
     }
 
-    public void setClasDate(Date clasDate) {
-        this.clasDate = clasDate;
+    public void setClassDate(Date classDate) {
+        this.classDate = classDate;
     }
 
-    public Long getRemotePresentId() {
-        return remotePresentId;
+    public RemotePresent getRemotePresent() {
+        return remotePresent;
     }
 
-    public void setRemotePresentId(Long remotePresentId) {
-        this.remotePresentId = remotePresentId;
+    public void setRemotePresent(RemotePresent remotePresent) {
+        this.remotePresent = remotePresent;
     }
 
-    public Long getCourseId() {
-        return courseId;
+    public Course getCourse() {
+        return course;
     }
 
-    public void setCourseId(Long courseId) {
-        this.courseId = courseId;
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+
+    public List<File> getListFiles() {
+        return listFiles;
+    }
+
+    public void setListFiles(List<File> listFiles) {
+        this.listFiles = listFiles;
     }
 
     @Override
@@ -66,9 +87,10 @@ public class Classes {
         return "Classes{" +
                 "id=" + id +
                 ", description='" + description + '\'' +
-                ", clasDate=" + clasDate +
-                ", remotePresentId=" + remotePresentId +
-                ", courseId=" + courseId +
+                ", classDate=" + classDate +
+                ", remotePresent=" + remotePresent +
+                ", course=" + course +
+                ", listFiles=" + listFiles +
                 '}';
     }
 }

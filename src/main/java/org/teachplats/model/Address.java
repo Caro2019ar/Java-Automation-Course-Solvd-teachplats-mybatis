@@ -4,20 +4,22 @@ public class Address {
     private Long id;
     private String street;
     private String number;
-    private Long cityId;
+    private City city;
 
+    public Address() {
+    }
 
-    public Address(Long id, String street, String number, Long cityId) {
+    public Address(String street, String number, City city) {
+        this.street = street;
+        this.number = number;
+        this.city = city;
+    }
+
+    public Address(Long id, String street, String number, City city) {
         this.id = id;
         this.street = street;
         this.number = number;
-        this.cityId = cityId;
-    }
-
-    public Address(String street, String number, Long cityId) {
-        this.street = street;
-        this.number = number;
-        this.cityId = cityId;
+        this.city = city;
     }
 
     public Long getId() {
@@ -44,12 +46,12 @@ public class Address {
         this.number = number;
     }
 
-    public Long getCityId() {
-        return cityId;
+    public City getCity() {
+        return city;
     }
 
-    public void setCityId(Long cityId) {
-        this.cityId = cityId;
+    public void setCity(City city) {
+        this.city = city;
     }
 
     @Override
@@ -58,7 +60,7 @@ public class Address {
                 "id=" + id +
                 ", street='" + street + '\'' +
                 ", number='" + number + '\'' +
-                ", cityId=" + cityId +
+                ", city=" + city +
                 '}';
     }
 }

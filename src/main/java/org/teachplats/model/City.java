@@ -3,15 +3,20 @@ package org.teachplats.model;
 public class City {
     private Long id;
     private String name;
-    private Long stateId;
+    private State state;
 
     public City() {
     }
 
-    public City(Long id, String name, Long stateId) {
+    public City(String name, State state) {
+        this.name = name;
+        this.state = state;
+    }
+
+    public City(Long id, String name, State state) {
         this.id = id;
         this.name = name;
-        this.stateId = stateId;
+        this.state = state;
     }
 
     public Long getId() {
@@ -30,12 +35,12 @@ public class City {
         this.name = name;
     }
 
-    public Long getStateId() {
-        return stateId;
+    public State getState() {
+        return state;
     }
 
-    public void setStateId(Long stateId) {
-        this.stateId = stateId;
+    public void setState(State state) {
+        this.state = state;
     }
 
     @Override
@@ -43,7 +48,7 @@ public class City {
         return "City{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", stateId=" + stateId +
+                ", state=" + state +
                 '}';
     }
 }
