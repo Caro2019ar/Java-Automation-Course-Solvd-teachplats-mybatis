@@ -3,8 +3,6 @@ package org.teachplats.connection;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-//import org.apache.logging.log4j.LogManager;
-//import org.apache.logging.log4j.Logger;
 import org.teachplats.connection.mysql_jdbc.AbstractMySqlJDBC;
 
 import java.sql.Connection;
@@ -40,7 +38,6 @@ public class ConnectionDBCP2 extends AbstractMySqlJDBC {
     public Connection getConnection() {
         try {
             logger.info("Database connected");
-            //System.out.println("Connected");
             return this.getInstance().getConnection();
         } catch (SQLException e) {
            throw new RuntimeException("Database could not connect. ");

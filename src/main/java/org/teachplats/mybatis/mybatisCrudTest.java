@@ -24,6 +24,7 @@ public class mybatisCrudTest {
         try (SqlSession session = sqlSessionFactory.openSession()) {
 
             Country country = new Country("Colombina");
+
             //======== Insert
             //insertTest(session, country);
 
@@ -48,8 +49,7 @@ public class mybatisCrudTest {
     }
     public static void selectTest(SqlSession session){
         List<Country> list = session.selectList("Country.getAll");
-        logger.info(list.toString());
-        //list.forEach(System.out::println);
+        list.forEach(logger::info);
     }
 
     public static void updateTest(SqlSession session, Country country){
