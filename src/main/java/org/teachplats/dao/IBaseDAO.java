@@ -1,6 +1,5 @@
 package org.teachplats.dao;
 
-import org.teachplats.model.Country;
 
 import java.sql.SQLException;
 
