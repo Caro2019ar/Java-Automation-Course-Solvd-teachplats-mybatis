@@ -1,7 +1,6 @@
 package org.teachplats.connection;
 
 import org.apache.commons.dbcp2.BasicDataSource;
-import org.teachplats.connection.mysql_jdbc.AbstractMySqlJDBC;
 
 import java.sql.Connection;
 import java.sql.SQLException;

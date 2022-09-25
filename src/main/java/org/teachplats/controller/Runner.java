@@ -7,10 +7,14 @@ public class Runner {
     private static CountryServiceImp countryServiceImp = new CountryServiceImp();
 
     public static void main(String[] args) {
-//        countryServiceImp.add(new Country("Bolivia"));
-//        System.out.println(countryServiceImp.add(new Country("Bolivia")));
 
+/*        countryServiceImp.create(new Country("Bolivia"));
 
-        System.out.println(countryServiceImp.search(9l));
+        countryServiceImp.searchById(11l);
+
+        countryServiceImp.deleteById(9l);
+
+        countryServiceImp.update(new Country(9l, "Germany"));
+        System.out.println(countryServiceImp.listAll());*/
     }
 }

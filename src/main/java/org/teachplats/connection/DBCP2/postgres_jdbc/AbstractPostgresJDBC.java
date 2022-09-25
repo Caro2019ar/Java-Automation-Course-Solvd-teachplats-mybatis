@@ -1,4 +1,4 @@
-package org.teachplats.connection.postgres_jdbc;
+package org.teachplats.connection.DBCP2.postgres_jdbc;
 
 
 public abstract  class AbstractPostgresJDBC {

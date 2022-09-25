@@ -1,9 +1,9 @@
-package org.teachplats.connection;
+package org.teachplats.connection.DBCP2;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-import org.teachplats.connection.mysql_jdbc.AbstractMySqlJDBC;
+import org.teachplats.connection.DBCP2.mysql_jdbc.AbstractMySqlJDBC;
 
 import java.sql.Connection;
 import java.sql.SQLException;

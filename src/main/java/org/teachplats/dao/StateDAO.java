@@ -5,6 +5,7 @@ import org.apache.log4j.Logger;
 import org.teachplats.model.State;
 
 import java.sql.*;
+import java.util.List;
 
 public class StateDAO extends BaseDAO<State> implements IStateDAO {
 
@@ -25,8 +26,18 @@ public class StateDAO extends BaseDAO<State> implements IStateDAO {
     }
 
     @Override
-    public void removeById(Long id) throws SQLException {
+    public void removeById(Long id)  {
 
+    }
+
+    @Override
+    public void update(State state) {
+
+    }
+
+    @Override
+    public List<State> getAll() {
+        return null;
     }
 
     @Override

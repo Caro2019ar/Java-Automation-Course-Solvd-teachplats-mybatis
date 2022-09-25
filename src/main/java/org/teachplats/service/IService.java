@@ -4,10 +4,10 @@ import java.util.List;
 
 public interface IService <T, ID> {
 
-    public T add(T t);
-    public T search(ID id);
-    public List<T> list();
-    public T update(T t);
-    public void delete(ID id);
+    public void create(T t);
+    public T searchById(ID id);
+    public List<T> listAll();
+    public void update(T t);
+    public void deleteById(ID id);
 
 }

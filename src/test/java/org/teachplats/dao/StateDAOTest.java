@@ -1,11 +1,9 @@
 package org.teachplats.dao;
 
 
-import org.teachplats.connection.ConnectionDBCP2;
+import org.teachplats.connection.DBCP2.ConnectionDBCP2;
 import org.teachplats.model.State;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
 
 import java.sql.Connection;
 

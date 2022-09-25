@@ -22,22 +22,16 @@
         SELECT * FROM Countries;
     </select>
 
-    <update id = "update" parameterType = "Country">
+    <update id = "update" parameterType = "Country" >
         UPDATE Countries
-
         <choose>
             <when test = "name != null">
                 SET name = #{name} WHERE ID = #{id};
             </when>
-
             <when test = "id != null">
                 WHERE ID = #{id};
             </when>
         </choose>
-<!--        <if test = "id != null">-->
-<!--            WHERE ID = #{id};-->
-<!--        </if>-->
-
     </update>
 
     <delete id = "deleteById" parameterType = "Long">

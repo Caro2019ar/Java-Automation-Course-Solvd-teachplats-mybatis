@@ -2,61 +2,38 @@ package org.teachplats.service;
 
 import org.apache.ibatis.session.SqlSession;
 import org.teachplats.connection.SessionFactory;
-import org.teachplats.dao.BaseDAO;
 import org.teachplats.dao.CountryDAO;
-import org.teachplats.dao.ICountryDAO;
 import org.teachplats.model.Country;
 import org.teachplats.mybatis.CountryMapper;
 
-import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 
 public class CountryServiceImp implements ICountryService {
+   private CountryDAO countryDAO = new CountryDAO();
 
-    //=========Dessa forma que Dima passou com getMapper tem que criar Interface CountryMapper e usar Annotations (nao XML)
     @Override
-    public Country add(Country country) {
-        try (SqlSession sqlSession = new SessionFactory().sqlSessionFactoryBuild()) {
-            CountryMapper countryMapper = sqlSession.getMapper(CountryMapper.class);
-            try{ countryMapper.insert(country.getName());
-                sqlSession.commit();
-            }catch (Exception ex) {
-                sqlSession.rollback();
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        return country;
+    public void create(Country country) {
+        countryDAO.create(country);
     }
 
     @Override
-    public Country search(Long id) {
-        Country country=new Country();
-        try (SqlSession sqlSession = new SessionFactory().sqlSessionFactoryBuild()) {
-            try{country = sqlSession.selectOne("Country.selectById", id);
-                sqlSession.commit();
-            }catch (Exception ex) {
-                sqlSession.rollback();
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        return country;
+    public Country searchById(Long id) {
+        return countryDAO.getById(id);
     }
 
     @Override
-    public List<Country> list() {
-        return null;
+    public List<Country> listAll() {
+        return countryDAO.getAll();
     }
 
     @Override
-    public Country update(Country country) {
-        return null;
+    public void update(Country country) {
+        countryDAO.update(country);
     }
 
-    @Override
-    public void delete(Long aLong) {
 
+    @Override
+    public void deleteById(Long id) {
+        countryDAO.removeById(id);
     }
 }

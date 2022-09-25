@@ -31,6 +31,16 @@ public class UserDAO implements IUserDAO {
     }
 
     @Override
+    public void update(User user) {
+
+    }
+
+    @Override
+    public List<User> getAll() {
+        return null;
+    }
+
+    @Override
     public List<User> getAllUsers() {
         return null;
     }

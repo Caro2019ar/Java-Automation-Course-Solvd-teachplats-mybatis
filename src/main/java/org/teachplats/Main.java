@@ -1,6 +1,6 @@
 package org.teachplats;
 
-import org.teachplats.connection.ConnectionDBCP2;
+import org.teachplats.connection.DBCP2.ConnectionDBCP2;
 
 import java.sql.Connection;
 import java.sql.SQLException;
