@@ -1,18 +1,30 @@
 package org.teachplats.model;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class State {
     private Long id;
     private String name;
     private Long countryId;
-    private Country country=new Country();
+    private Country country;
+    private Set<City> citySet;
 
     public State() {
+    }
+
+    public State(String name) {
+        this.name = name;
+        this.countryId= this.country.getId();
+        this.citySet=new HashSet<>();
     }
 
     public State(String name, Long idFromCountry) {
         this.name = name;
         this.countryId =idFromCountry;
         this.country.setId(countryId);
+        this.citySet=new HashSet<>();
     }
 
     public State(Long id, String name,Long idFromCountry) {
@@ -20,8 +32,16 @@ public class State {
         this.name = name;
         this.countryId =idFromCountry;
         this.country.setId(countryId);
+        this.citySet=new HashSet<>();
     }
 
+    public State(Long id, String name,Long idFromCountry, HashSet<City> citySet) {
+        this.id = id;
+        this.name = name;
+        this.countryId =idFromCountry;
+        this.country.setId(countryId);
+        this.citySet=citySet;
+    }
     public Long getId() {
         return id;
     }
@@ -42,6 +62,10 @@ public class State {
         return country;
     }
 
+    public void setCountry(Country country) {
+        this.country = country;
+    }
+
     public void setCountryId(Long countryId) {
         this.countryId = countryId;
     }
@@ -50,6 +74,15 @@ public class State {
         return countryId;
     }
 
+    public void addCityToStateSet(City city) {
+        citySet.add(city);
+        city.setState(this);
+    }
+
+    public void removeCityToStateSet(City city) {
+        citySet.remove(city);
+        city.setState(null);
+    }
     @Override
     public String toString() {
         return "State{" +

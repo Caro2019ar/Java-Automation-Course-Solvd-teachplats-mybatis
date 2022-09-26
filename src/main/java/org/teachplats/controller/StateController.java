@@ -18,13 +18,13 @@ public class StateController {
 
     public static void main(String[] args) {
 
-        //List<State> list = stateServiceImp.listAll();
-        // System.out.println(stateDAO.getAll());
-//       State state= new State("Chaco", 2l);
-//       stateServiceImp.create(state);
-       //stateServiceImp.searchById(2l);//Não traz o estado
-       // stateServiceImp.deleteById(8l);
-        State state= new State(9l,"Corrientes", 2l);
-        stateServiceImp.update(state);
+/*        List<State> list = stateServiceImp.listAll();
+        System.out.println(stateDAO.getAll());
+        State state1 = new State("Chaco", 2l);
+        stateServiceImp.create(state1);
+        stateServiceImp.searchById(2l);//Não traz o estado
+        stateServiceImp.deleteById(8l);
+        State state = new State(9l, "Corrientes", 2l);
+        stateServiceImp.update(state);*/
     }
 }

@@ -5,13 +5,21 @@ public class City {
     private String name;
     private Long stateId;
 
+    private State state;
+
     public City() {
+    }
+
+    public City(String name) {
+        this.name = name;
+
     }
 
     public City(Long id, String name, Long stateId) {
         this.id = id;
         this.name = name;
         this.stateId = stateId;
+        this.state.setId(stateId);
     }
 
     public Long getId() {
@@ -36,6 +44,14 @@ public class City {
 
     public void setStateId(Long stateId) {
         this.stateId = stateId;
+    }
+
+    public State getState() {
+        return state;
+    }
+
+    public void setState(State state) {
+        this.state = state;
     }
 
     @Override

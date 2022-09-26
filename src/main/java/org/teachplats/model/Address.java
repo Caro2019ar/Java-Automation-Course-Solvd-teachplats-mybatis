@@ -5,6 +5,7 @@ public class Address {
     private String street;
     private String number;
     private Long cityId;
+    private City city;
 
 
     public Address(Long id, String street, String number, Long cityId) {
@@ -12,12 +13,14 @@ public class Address {
         this.street = street;
         this.number = number;
         this.cityId = cityId;
+        this.city.setId(cityId);
     }
 
     public Address(String street, String number, Long cityId) {
         this.street = street;
         this.number = number;
         this.cityId = cityId;
+        this.city.setId(cityId);
     }
 
     public Long getId() {

@@ -5,6 +5,6 @@ import org.apache.ibatis.annotations.Select;
 import org.teachplats.model.Country;
 
 public interface CountryMapper {
-    @Insert("INSERT INTO Countries(NAME) VALUES (#{name});")
-    Country insert (String name);
+//    @Insert("INSERT INTO Countries(NAME) VALUES (#{name});")
+//    Country insert (String name);
 }

@@ -62,7 +62,7 @@ public class CountryDAO implements ICountryDAO {
 
     @Override
     public List<Country> getAll() {
-        List<Country> countryList = new ArrayList<>();
+        List<Country> countryList = null;
         try (SqlSession sqlSession = new SessionFactory().sqlSessionFactoryBuild()) {
             try {
                 countryList = sqlSession.selectList("Country.getAll");

@@ -10,65 +10,102 @@ public class User {
  private String email;
  private Date dateOfBirth;
  private Long addressId;
+ private Address address;
 
- public User(Long id, String firstName, String lastName, String phone, String email, Date dateOfBirth, Long address) {
+ public User(Long id, String firstName, String lastName, String phone, String email, Date dateOfBirth, Address address) {
   this.id = id;
   this.firstName = firstName;
   this.lastName = lastName;
   this.phone = phone;
   this.email = email;
   this.dateOfBirth = dateOfBirth;
-  this.addressId = address;
+  this.address = address;
  }
 
- public User(String firstName, String lastName, String phone, String email, Date dateOfBirth, Long address) {
+ public User(String firstName, String lastName, String phone, String email, Date dateOfBirth, Long addressId) {
   this.firstName = firstName;
   this.lastName = lastName;
   this.phone = phone;
   this.email = email;
   this.dateOfBirth = dateOfBirth;
-  this.addressId = address;
+  this.addressId = addressId;
  }
-
 
  public Long getId() {
   return id;
+ }
+
+ public void setId(Long id) {
+  this.id = id;
  }
 
  public String getFirstName() {
   return firstName;
  }
 
+ public void setFirstName(String firstName) {
+  this.firstName = firstName;
+ }
+
  public String getLastName() {
   return lastName;
+ }
+
+ public void setLastName(String lastName) {
+  this.lastName = lastName;
  }
 
  public String getPhone() {
   return phone;
  }
 
+ public void setPhone(String phone) {
+  this.phone = phone;
+ }
+
  public String getEmail() {
   return email;
+ }
+
+ public void setEmail(String email) {
+  this.email = email;
  }
 
  public Date getDateOfBirth() {
   return dateOfBirth;
  }
 
+ public void setDateOfBirth(Date dateOfBirth) {
+  this.dateOfBirth = dateOfBirth;
+ }
+
  public Long getAddressId() {
   return addressId;
  }
 
+ public void setAddressId(Long addressId) {
+  this.addressId = addressId;
+ }
+
+ public Address getAddress() {
+  return address;
+ }
+
+ public void setAddress(Address address) {
+  this.address = address;
+ }
+
  @Override
  public String toString() {
-  return "User{" +
-          "id=" + id +
-          ", firstName='" + firstName + '\'' +
-          ", lastName='" + lastName + '\'' +
-          ", phone='" + phone + '\'' +
-          ", email='" + email + '\'' +
-          ", dateOfBirth=" + dateOfBirth +
-          ", addressId=" + addressId +
-          '}';
+  final StringBuilder sb = new StringBuilder("User{");
+  sb.append("id=").append(id);
+  sb.append(", firstName='").append(firstName).append('\'');
+  sb.append(", lastName='").append(lastName).append('\'');
+  sb.append(", phone='").append(phone).append('\'');
+  sb.append(", email='").append(email).append('\'');
+  sb.append(", dateOfBirth=").append(dateOfBirth);
+  sb.append(", addressId=").append(addressId);
+  sb.append('}');
+  return sb.toString();
  }
 }

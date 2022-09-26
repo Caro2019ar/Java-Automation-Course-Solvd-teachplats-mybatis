@@ -7,16 +7,18 @@
     <insert id = "insert" parameterType = "Country">
         INSERT INTO Countries (NAME) VALUES (#{name});
 
-        <selectKey keyProperty = "id" resultType = "Long" order = "AFTER">
+<!--   ===== Had to remove this keyProperty = "id" due to a bug from MyBatis version - https://github.com/mybatis/mybatis-3/issues/1528 -->
+        <selectKey resultType = "Long" order = "AFTER">
             select last_insert_id() as id
         </selectKey>
     </insert>
 
     <resultMap id="result" type="Country">
-        <result property="id" column="ID"/>
+        <id property="id" column="ID"/>
         <result property="name" column="NAME"/>
+
     </resultMap>
-    <select id = "selectById" resultMap = "result">
+    <select id = "selectById" resultMap = "result" parameterType ="Long">
         SELECT * FROM Countries  WHERE ID = #{id};
     </select>
     <select id = "selectByName" resultMap = "result">

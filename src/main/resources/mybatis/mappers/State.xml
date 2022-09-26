@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace = "org.teachplats.dao.IStateDAO">
-
+<!-- ========================= Usei Annotations para State para testar=========================-->
 <!--    <insert id = "insert" parameterType = "State">-->
 <!--        INSERT INTO States (NAME) VALUES (#{name});-->
 
@@ -10,14 +10,14 @@
 <!--            select last_insert_id() as id-->
 <!--        </selectKey>-->
 <!--    </insert>-->
-    <resultMap id="result" type="org.teachplats.model.State">
-        <id property="id" column="idState"/>
-        <result property="name" column="NAME"/>
-        <result property="countryId" column="COUNTRY_ID"/>
-    </resultMap>
-    <select id = "selectById" resultMap = "result">
-        SELECT * FROM States  WHERE ID = #{id};
-    </select>
+<!--    <resultMap id="result" type="org.teachplats.model.State">-->
+<!--        <id property="id" column="idState"/>-->
+<!--        <result property="name" column="NAME"/>-->
+<!--        <result property="countryId" column="COUNTRY_ID"/>-->
+<!--    </resultMap>-->
+<!--    <select id = "selectById" resultMap = "result">-->
+<!--        SELECT * FROM States  WHERE ID = #{id};-->
+<!--    </select>-->
 <!--    <select id = "selectByName" resultMap = "result">-->
 <!--        SELECT * FROM States  WHERE NAME = #{name};-->
 <!--    </select>-->
