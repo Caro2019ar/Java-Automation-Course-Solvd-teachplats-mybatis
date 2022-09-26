@@ -5,6 +5,7 @@ import org.teachplats.model.User;
 
 import java.sql.Connection;
 import java.util.List;
+import java.util.Optional;
 
 public class UserDAO implements IUserDAO {
     private Connection connection;

@@ -6,12 +6,12 @@ import org.apache.log4j.Logger;
 import org.teachplats.connection.SessionFactory;
 import org.teachplats.exception.ResourceNotFoundException;
 import org.teachplats.model.Country;
-import org.teachplats.mybatis.CountryMapper;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-public class CountryDAO extends BaseDAO<Country> implements ICountryDAO {
+public class CountryDAO implements ICountryDAO {
 
     private final static Logger logger = LogManager.getLogger(StateDAO.class);
     private static Country country;
@@ -23,7 +23,7 @@ public class CountryDAO extends BaseDAO<Country> implements ICountryDAO {
             //---DIMA: CountryMapper countryMapper = sqlSession.getMapper(CountryMapper.class);
             try {
                 //---DIMA: countryMapper.insert(country.getName());
-                country = sqlSession.selectOne("Country.insert", country.getName());
+                sqlSession.selectOne("Country.insert", country.getName());
                 sqlSession.commit();
             } catch (Exception ex) {
                 logger.warn(ex.getMessage());
@@ -91,5 +91,24 @@ public class CountryDAO extends BaseDAO<Country> implements ICountryDAO {
                 sqlSession.rollback();
             }
         }
+    }
+
+    @Override
+    public Country getByName(String name) {
+        try (SqlSession sqlSession = new SessionFactory().sqlSessionFactoryBuild()) {
+            try {
+                Country countrySelected = (Country) sqlSession.selectOne("Country.selectByName", name);
+                country = countrySelected;
+                if (countrySelected == null) {
+                    logger.warn("---------- countrySelected: " + countrySelected);
+                    throw new ResourceNotFoundException("Couldn't find this name");
+                }
+                sqlSession.commit();
+            } catch (Exception ex) {
+                logger.warn(ex.getMessage() + " Could not find this resource");
+                sqlSession.rollback();
+            }
+        }
+        return country;
     }
 }

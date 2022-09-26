@@ -7,9 +7,10 @@ import org.teachplats.model.Country;
 import org.teachplats.mybatis.CountryMapper;
 
 import java.util.List;
+import java.util.Optional;
 
 public class CountryServiceImp implements ICountryService {
-   private CountryDAO countryDAO = new CountryDAO();
+    private CountryDAO countryDAO = new CountryDAO();
 
     @Override
     public void create(Country country) {
@@ -35,5 +36,9 @@ public class CountryServiceImp implements ICountryService {
     @Override
     public void deleteById(Long id) {
         countryDAO.removeById(id);
+    }
+
+    public Country searchByName(String name) {
+        return countryDAO.getByName(name);
     }
 }

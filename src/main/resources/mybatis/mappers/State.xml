@@ -1,0 +1,43 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "org.teachplats.dao.IStateDAO">
+
+<!--    <insert id = "insert" parameterType = "State">-->
+<!--        INSERT INTO States (NAME) VALUES (#{name});-->
+
+<!--        <selectKey keyProperty = "id" resultType = "Long" order = "AFTER">-->
+<!--            select last_insert_id() as id-->
+<!--        </selectKey>-->
+<!--    </insert>-->
+<!--    <resultMap id="result" type="org.teachplats.model.State">-->
+<!--        <result property="id" column="ID"/>-->
+<!--        <result property="name" column="NAME"/>-->
+<!--        <result property="Country" column="COUNTRY_ID"/>-->
+<!--    </resultMap>-->
+<!--    <select id = "selectById" resultMap = "result">-->
+<!--        SELECT * FROM States  WHERE ID = #{id};-->
+<!--    </select>-->
+<!--    <select id = "selectByName" resultMap = "result">-->
+<!--        SELECT * FROM States  WHERE NAME = #{name};-->
+<!--    </select>-->
+<!--    <select id = "getAll" >-->
+<!--        SELECT * FROM States;-->
+<!--    </select>-->
+
+<!--    <update id = "update" parameterType = "State" >-->
+<!--        UPDATE States-->
+<!--        <choose>-->
+<!--            <when test = "name != null">-->
+<!--                SET name = #{name} WHERE ID = #{id};-->
+<!--            </when>-->
+<!--            <when test = "id != null">-->
+<!--                WHERE ID = #{id};-->
+<!--            </when>-->
+<!--        </choose>-->
+<!--    </update>-->
+
+<!--    <delete id = "deleteById" parameterType = "Long">-->
+<!--        DELETE from States WHERE ID = #{id};-->
+<!--    </delete>-->
+</mapper>

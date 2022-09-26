@@ -1,6 +1,9 @@
 package org.teachplats.service;
 
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.teachplats.dao.StateDAO;
 import org.teachplats.model.Country;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
@@ -14,6 +17,7 @@ import java.util.List;
 
 
 public class CountryTest {
+    private final static Logger logger = LogManager.getLogger(CountryTest.class);
     private static CountryServiceImp countryServiceImp = new CountryServiceImp();
     private static Long idToBeRemoved = null;
     private static Long idToBeSearched = null;
@@ -53,7 +57,12 @@ public class CountryTest {
         countryServiceImp.deleteById(idToBeRemoved);
         Assert.assertNull(countryServiceImp.searchById(idToBeRemoved));
     }
-
+    @Test
+    public Country searchByNameTest(){
+        Country country1 =  countryServiceImp.searchByName("Colombia");
+        System.out.println(country1);
+        return country1;
+    }
     @Test (dependsOnMethods = "createTest")
     public void getAllTest() {
         List<Country> listTest = new ArrayList<>();
@@ -65,6 +74,7 @@ public class CountryTest {
         listTest.add(country2);
         countryServiceImp.listAll();
         Assert.assertFalse(listTest.isEmpty());
+        Assert.assertEquals(countryServiceImp.searchById(idToBeSearched).getName(), "Germany");
     }
 
     @Test(dependsOnMethods = "getByIdTest")

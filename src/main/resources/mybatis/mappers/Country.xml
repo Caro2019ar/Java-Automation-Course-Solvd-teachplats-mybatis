@@ -18,6 +18,9 @@
     <select id = "selectById" resultMap = "result">
         SELECT * FROM Countries  WHERE ID = #{id};
     </select>
+    <select id = "selectByName" resultMap = "result">
+        SELECT * FROM Countries  WHERE NAME = #{name};
+    </select>
     <select id = "getAll" resultMap = "result">
         SELECT * FROM Countries;
     </select>

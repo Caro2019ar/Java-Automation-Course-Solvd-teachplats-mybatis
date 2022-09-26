@@ -1,4 +1,4 @@
-package org.teachplats.connection;
+package org.teachplats.connection.DBCP2;
 
 
 public abstract  class AbstractMySqlJDBCTest {
