@@ -10,14 +10,14 @@
 <!--            select last_insert_id() as id-->
 <!--        </selectKey>-->
 <!--    </insert>-->
-<!--    <resultMap id="result" type="org.teachplats.model.State">-->
-<!--        <result property="id" column="ID"/>-->
-<!--        <result property="name" column="NAME"/>-->
-<!--        <result property="Country" column="COUNTRY_ID"/>-->
-<!--    </resultMap>-->
-<!--    <select id = "selectById" resultMap = "result">-->
-<!--        SELECT * FROM States  WHERE ID = #{id};-->
-<!--    </select>-->
+    <resultMap id="result" type="org.teachplats.model.State">
+        <id property="id" column="idState"/>
+        <result property="name" column="NAME"/>
+        <result property="countryId" column="COUNTRY_ID"/>
+    </resultMap>
+    <select id = "selectById" resultMap = "result">
+        SELECT * FROM States  WHERE ID = #{id};
+    </select>
 <!--    <select id = "selectByName" resultMap = "result">-->
 <!--        SELECT * FROM States  WHERE NAME = #{name};-->
 <!--    </select>-->

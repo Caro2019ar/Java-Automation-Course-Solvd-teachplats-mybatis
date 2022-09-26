@@ -23,7 +23,7 @@ public class CountryDAO implements ICountryDAO {
             //---DIMA: CountryMapper countryMapper = sqlSession.getMapper(CountryMapper.class);
             try {
                 //---DIMA: countryMapper.insert(country.getName());
-                sqlSession.selectOne("Country.insert", country.getName());
+                sqlSession.insert("Country.insert", country.getName());
                 sqlSession.commit();
             } catch (Exception ex) {
                 logger.warn(ex.getMessage());

@@ -11,6 +11,7 @@
             select last_insert_id() as id
         </selectKey>
     </insert>
+
     <resultMap id="result" type="Country">
         <result property="id" column="ID"/>
         <result property="name" column="NAME"/>

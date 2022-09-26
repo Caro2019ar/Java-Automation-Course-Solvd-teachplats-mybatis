@@ -7,11 +7,11 @@ import org.teachplats.model.State;
 import java.util.List;
 
 public interface IStateDAO<State> extends IBaseDAO<State>{
-    State getByName (String name);
+
     @Insert(" INSERT INTO States (name, country_id) VALUES (#{name}, #{countryId})")
     void create(State state);
 
-    @Select("select * from States where idState = #{id}")
+    @Select("select idState, name,country_id from States where idState = #{id}")
     @Results(value = {
             @Result(property = "id", column = "idState"),
             @Result(property = "name", column = "name"),
@@ -21,6 +21,7 @@ public interface IStateDAO<State> extends IBaseDAO<State>{
     @Delete("delete from States where idState = #{id}")
     void removeById(Long id);
 
+    @Update("update States SET name = #{name}, country_id = #{countryId} where idState = #{id}")
     void update(State state);
 
     @Select("Select idState, name from States")

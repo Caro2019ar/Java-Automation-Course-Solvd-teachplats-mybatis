@@ -4,6 +4,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.teachplats.connection.SessionFactory;
+import org.teachplats.exception.ResourceNotFoundException;
 import org.teachplats.model.Country;
 import org.teachplats.model.State;
 
@@ -68,7 +69,16 @@ public class StateDAO extends BaseDAO<State> implements IStateDAO<State> {
 
     @Override
     public void update(State state) {
-
+        try (SqlSession sqlSession = new SessionFactory().sqlSessionFactoryBuild()) {
+            IStateDAO iStateDAO = sqlSession.getMapper(IStateDAO.class);
+            try {
+               iStateDAO.update(state);
+                sqlSession.commit();
+            } catch (Exception ex) {
+                logger.warn(ex.getMessage() + " Could not update this resource");
+                sqlSession.rollback();
+            }
+        }
     }
 
     @Override
@@ -89,8 +99,5 @@ public class StateDAO extends BaseDAO<State> implements IStateDAO<State> {
     }
 
 
-    @Override
-    public State getByName(String name) {
-        return null;
-    }
+
 }

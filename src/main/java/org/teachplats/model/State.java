@@ -3,19 +3,22 @@ package org.teachplats.model;
 public class State {
     private Long id;
     private String name;
+    private Long countryId;
     private Country country=new Country();
 
     public State() {
     }
 
-    public State(String name, Long countryId) {
+    public State(String name, Long idFromCountry) {
         this.name = name;
+        this.countryId =idFromCountry;
         this.country.setId(countryId);
     }
 
-    public State(Long id, String name,Long countryId) {
+    public State(Long id, String name,Long idFromCountry) {
         this.id = id;
         this.name = name;
+        this.countryId =idFromCountry;
         this.country.setId(countryId);
     }
 
@@ -39,12 +42,13 @@ public class State {
         return country;
     }
 
+    public void setCountryId(Long countryId) {
+        this.countryId = countryId;
+    }
 
-     public Long getCountryId (){
-         Long countryId = this.country.getId();
-         return countryId;
-     }
-
+    public Long getCountryId() {
+        return countryId;
+    }
 
     @Override
     public String toString() {

@@ -19,11 +19,12 @@ public class StateController {
     public static void main(String[] args) {
 
         //List<State> list = stateServiceImp.listAll();
-        //list.forEach(logger::info);
         // System.out.println(stateDAO.getAll());
 //       State state= new State("Chaco", 2l);
 //       stateServiceImp.create(state);
-       System.out.println("Controller" + stateServiceImp.searchById(2l));
+       //stateServiceImp.searchById(2l);//Não traz o estado
        // stateServiceImp.deleteById(8l);
+        State state= new State(9l,"Corrientes", 2l);
+        stateServiceImp.update(state);
     }
 }
