@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<countries>
+    <country id="1">
+        <name>Argentina</name>
+        <states>
+            <state id="1">
+                <name>Buenos Aires</name>
+                <cities>
+                    <city id="1">
+                        <name>Buenos Aires</name>
+                    </city>
+                    <city id="2">
+                        <name>Pilar</name>
+                    </city>
+                    <city id="3">
+                        <name>Zarate</name>
+                    </city>
+                </cities>
+            </state>
+            <state id="2">
+                <name>Entre Rios</name>
+                <cities>
+                    <city id="4">
+                        <name>Gualeguay</name>
+                    </city>
+                    <city id="5">
+                        <name>Concordia</name>
+                    </city>
+                </cities>
+            </state>
+        </states>
+    </country>
+    <country id="2">
+        <name>Brazil</name>
+        <states>
+            <state id="3">
+                <name>Sao Paulo</name>
+                <cities>
+                    <city id="6">
+                        <name>Sao Paulo</name>
+                    </city>
+                </cities>
+            </state>
+        </states>
+    </country>
+<!--    <country id="3">-->
+    <!--        <name>Paraguay</name>-->
+
+    <!--    </country>-->
+</countries>

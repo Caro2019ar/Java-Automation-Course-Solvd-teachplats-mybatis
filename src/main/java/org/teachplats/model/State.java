@@ -1,5 +1,7 @@
 package org.teachplats.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -7,6 +9,7 @@ import java.util.Set;
 public class State {
     private Long id;
     private String name;
+    @JsonIgnore
     private Long countryId;
     //---Tem que inicializar o atributo ou MyBatis reclama de getters/setters
     private Country country=new Country();
