@@ -1,0 +1,61 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--====Para usar com interface CountryMapper com annotation e comentar trecho do INSERT-->
+<!--<mapper namespace = "org.teachplats.mybatis.CountryMapper">-->
+<mapper namespace="City">
+    <insert id="insert" parameterType="City">
+        INSERT INTO Cities (NAME) VALUES (#{name});
+
+        <!--   ===== Had to remove this keyProperty = "id" due to a bug from MyBatis version - https://github.com/mybatis/mybatis-3/issues/1528 -->
+        <selectKey resultType="Long" order="AFTER">
+            select last_insert_id() as id
+        </selectKey>
+    </insert>
+    <insert id="insertWithState" parameterType="City">
+        INSERT INTO Cities (NAME, state_id) VALUES (#{name}, #{stateId});
+
+        <!--   ===== Had to remove this keyProperty = "id" due to a bug from MyBatis version - https://github.com/mybatis/mybatis-3/issues/1528 -->
+        <selectKey resultType="Long" order="AFTER">
+            select last_insert_id() as id
+        </selectKey>
+    </insert>
+
+
+    <resultMap id="result" type="City">
+        <id property="id" column="ID"/>
+        <result property="name" column="NAME"/>
+        <result property="stateId" column="state_id"/>
+        <!--==========Não dá pra usar Association que dá erro MyBatis : Cause: org.apache.ibatis.reflection.ReflectionException: There is no getter for property named 'State' in 'class org.teachplats.model.City'-->
+        <!--        <association property="State" javaType="org.teachplats.model.State" column="idState" foreignColumn="state_id">-->
+        <!--            <id property="id" column="idState"/>-->
+        <!--            <result property="name" column="NAME"/>-->
+        <!--            <result property="countryId" column="COUNTRY_ID"/>-->
+        <!--        </association>-->
+    </resultMap>
+    <select id="selectById" resultMap="result" parameterType="Long">
+        SELECT * FROM Cities WHERE ID = #{id};
+    </select>
+    <select id="selectByName" resultMap="result">
+        SELECT * FROM Cities WHERE NAME = #{name};
+    </select>
+    <select id="getAll" resultMap="result">
+        SELECT * FROM Cities;
+    </select>
+
+    <update id="update" parameterType="City">
+        UPDATE Cities
+        <choose>
+            <when test="name != null">
+                SET name = #{name}, state_id= #{stateId} WHERE ID = #{id};
+            </when>
+            <when test="id != null">
+                WHERE ID = #{id};
+            </when>
+        </choose>
+    </update>
+
+    <delete id="deleteById" parameterType="Long">
+        DELETE from Cities WHERE ID = #{id};
+    </delete>
+</mapper>

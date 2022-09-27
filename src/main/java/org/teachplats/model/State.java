@@ -8,7 +8,8 @@ public class State {
     private Long id;
     private String name;
     private Long countryId;
-    private Country country;
+    //---Tem que inicializar o atributo ou MyBatis reclama de getters/setters
+    private Country country=new Country();
     private Set<City> citySet;
 
     public State() {

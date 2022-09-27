@@ -57,11 +57,13 @@ public class Address {
 
     @Override
     public String toString() {
-        return "Address{" +
-                "id=" + id +
-                ", street='" + street + '\'' +
-                ", number='" + number + '\'' +
-                ", cityId=" + cityId +
-                '}';
+        final StringBuilder sb = new StringBuilder("Address{");
+        sb.append("id=").append(id);
+        sb.append(", street='").append(street).append('\'');
+        sb.append(", number='").append(number).append('\'');
+        sb.append(", cityId=").append(cityId);
+        sb.append(", city=").append(city);
+        sb.append('}');
+        return sb.toString();
     }
 }

@@ -3,22 +3,22 @@ package org.teachplats.model;
 public class City {
     private Long id;
     private String name;
-    private Long stateId;
 
-    private State state;
+    //---Tem que inicializar o atributo ou MyBatis reclama de getters/setters
+    private State state = new State();
 
     public City() {
     }
 
-    public City(String name) {
-        this.name = name;
 
+    public City(String name, Long stateId) {
+        this.name = name;
+        this.state.setId(stateId);
     }
 
     public City(Long id, String name, Long stateId) {
         this.id = id;
         this.name = name;
-        this.stateId = stateId;
         this.state.setId(stateId);
     }
 
@@ -39,11 +39,11 @@ public class City {
     }
 
     public Long getStateId() {
-        return stateId;
+        return this.state.getId();
     }
 
     public void setStateId(Long stateId) {
-        this.stateId = stateId;
+        this.state.setId(stateId);
     }
 
     public State getState() {
@@ -56,10 +56,12 @@ public class City {
 
     @Override
     public String toString() {
-        return "City{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", stateId=" + stateId +
-                '}';
+        final StringBuilder sb = new StringBuilder("City{");
+        sb.append("id=").append(id);
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", stateId=").append(this.state.getId());
+        sb.append(", state=").append(state);
+        sb.append('}');
+        return sb.toString();
     }
 }
