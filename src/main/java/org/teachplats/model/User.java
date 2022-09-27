@@ -8,27 +8,28 @@ public class User {
  private String lastName;
  private String phone;
  private String email;
+ private Address address=new Address();
  private Date dateOfBirth;
- private Long addressId;
- private Address address;
 
- public User(Long id, String firstName, String lastName, String phone, String email, Date dateOfBirth, Address address) {
+
+ public User(String firstName, String lastName, String phone, String email,  Long addressId, Date dateOfBirth) {
+  this.firstName = firstName;
+  this.lastName = lastName;
+  this.phone = phone;
+  this.email = email;
+  this.address.setId(addressId);
+  this.dateOfBirth = dateOfBirth;
+
+ }
+
+ public User(Long id, String firstName, String lastName, String phone, String email, Long addressId, Date dateOfBirth) {
   this.id = id;
   this.firstName = firstName;
   this.lastName = lastName;
   this.phone = phone;
   this.email = email;
+  this.address.setId(addressId);
   this.dateOfBirth = dateOfBirth;
-  this.address = address;
- }
-
- public User(String firstName, String lastName, String phone, String email, Date dateOfBirth, Long addressId) {
-  this.firstName = firstName;
-  this.lastName = lastName;
-  this.phone = phone;
-  this.email = email;
-  this.dateOfBirth = dateOfBirth;
-  this.addressId = addressId;
  }
 
  public Long getId() {
@@ -80,11 +81,11 @@ public class User {
  }
 
  public Long getAddressId() {
-  return addressId;
+  return this.address.getId();
  }
 
  public void setAddressId(Long addressId) {
-  this.addressId = addressId;
+  this.address.setId(addressId);
  }
 
  public Address getAddress() {
@@ -104,7 +105,7 @@ public class User {
   sb.append(", phone='").append(phone).append('\'');
   sb.append(", email='").append(email).append('\'');
   sb.append(", dateOfBirth=").append(dateOfBirth);
-  sb.append(", addressId=").append(addressId);
+  sb.append(", addressId=").append(address.getId());
   sb.append('}');
   return sb.toString();
  }

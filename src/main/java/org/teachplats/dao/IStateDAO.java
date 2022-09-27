@@ -6,7 +6,7 @@ import org.teachplats.model.State;
 
 import java.util.List;
 
-public interface IStateDAO<State> extends IBaseDAO<State>{
+public interface IStateDAO extends IBaseDAO<State>{
 
     @Insert(" INSERT INTO States (name, country_id) VALUES (#{name}, #{countryId})")
     void create(State state);

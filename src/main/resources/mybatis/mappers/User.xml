@@ -1,15 +1,50 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace = "User">
 
-    <insert id = "insert" parameterType = "User">
-        INSERT INTO USER (NAME, BRANCH, PERCENTAGE, PHONE, EMAIL ) VALUES (#{name}, #{branch}, #{percentage}, #{phone}, #{email});
+<mapper namespace="User">
+    <insert id="insert" parameterType="User">
+        INSERT INTO Users (first_name, last_name, phone, email, address_id, date_of_birth) VALUES (#{firstName}, #{lastName},
+        #{phone}, #{email}, #{addressId}, #{dateOfBirth});
 
-        <selectKey keyProperty = "id" resultType = "Long" order = "AFTER">
+        <selectKey resultType="Long" order="AFTER">
             select last_insert_id() as id
         </selectKey>
-
     </insert>
 
+
+    <resultMap id="result" type="User" autoMapping="false">
+        <id property="id" column="ID"/>
+        <result property="firstName" column="first_name"/>
+        <result property="lastName" column="last_name"/>
+        <result property="phone" column="phone"/>
+        <result property="email" column="email"/>
+        <result property="addressId" column="address_id"/>
+        <result property="dateOfBirth" column="date_of_birth"/>
+
+
+    </resultMap>
+    <select id="selectById" resultMap="result" parameterType="Long">
+        SELECT * FROM Users WHERE ID = #{id};
+    </select>
+
+    <select id="getAll" resultMap="result">
+        SELECT * FROM Users;
+    </select>
+
+    <update id="update" parameterType="Address">
+        UPDATE Users
+        <choose>
+            <when test="name != null">
+                SET first_name = #{firstName}, last_name = #{lastName}, phone= #{phone}, email=#{email}, address_id=#{addressId}, date_of_birth= #{dateOfBirth} WHERE ID = #{id};
+            </when>
+            <when test="id != null">
+                WHERE ID = #{id};
+            </when>
+        </choose>
+    </update>
+
+    <delete id="deleteById" parameterType="Long">
+        DELETE from Users WHERE ID = #{id};
+    </delete>
 </mapper>

@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface IBaseDAO<T> {
-    void create(T object);
+    void create(T t);
 
     T getById(Long id);
 

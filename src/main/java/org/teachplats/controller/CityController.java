@@ -17,7 +17,7 @@ public class CityController {
 //        cityServiceImp.create(new City("Pilar",3l)); //ok
 //        cityServiceImp.searchById(6l); //ok
 //        cityServiceImp.deleteById(5l);//ok
-        cityServiceImp.update(new City(6l,"Zarate", 2l));//ok
+//        cityServiceImp.update(new City(6l,"Zarate", 2l));//ok
 
     }
 }

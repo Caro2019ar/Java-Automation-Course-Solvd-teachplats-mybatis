@@ -1,23 +1,23 @@
 package org.teachplats.dao;
 
+import org.apache.ibatis.session.SqlSession;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.teachplats.connection.SessionFactory;
+import org.teachplats.model.City;
 import org.teachplats.model.Country;
 import org.teachplats.model.User;
 
-import java.sql.Connection;
+
 import java.util.List;
 import java.util.Optional;
 
-public class UserDAO implements IUserDAO {
-    private Connection connection;
-
-    public UserDAO(Connection connection) {
-        this.connection = connection;
-    }
-
+public class UserDAO extends BaseDAO<User> implements IUserDAO {
+    private final static Logger logger = LogManager.getLogger(UserDAO.class);
+    private static UserDAO userDAO = new UserDAO();
 
     @Override
     public void create(User object) {
-        String sql = "INSERT INTO USER (first_name, last_name, phone, email, address_id, date_of_birth) VALUES (?, ?, ?, ?, ?, ?)";
     }
 
     @Override
@@ -38,11 +38,18 @@ public class UserDAO implements IUserDAO {
 
     @Override
     public List<User> getAll() {
-        return null;
+        List<User> userList = null;
+        try (SqlSession sqlSession = new SessionFactory().sqlSessionFactoryBuild()) {
+            try {
+                userList = sqlSession.selectList("User.getAll");
+                sqlSession.commit();
+            } catch (Exception ex) {
+                logger.warn(ex.getMessage());
+                sqlSession.rollback();
+            }
+        }
+        return userList;
     }
 
-    @Override
-    public List<User> getAllUsers() {
-        return null;
-    }
+
 }

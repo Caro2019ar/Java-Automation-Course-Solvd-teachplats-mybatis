@@ -9,6 +9,7 @@
         <typeAlias alias = "Country" type = "org.teachplats.model.Country"/>
         <typeAlias alias = "State" type = "org.teachplats.model.State"/>
         <typeAlias alias = "City" type = "org.teachplats.model.City"/>
+        <typeAlias alias = "Address" type = "org.teachplats.model.Address"/>
     </typeAliases>
 
     <environments default = "development">
@@ -31,7 +32,8 @@
         <mapper resource = "mybatis/mappers/Country.xml"/>
 <!--        <mapper resource = "mybatis/mappers/State.xml"/>-->
         <mapper resource = "mybatis/mappers/City.xml"/>
-<!--        <mapper resource = "org/teachplats/mybatis/User.xml"/>-->
+        <mapper resource = "mybatis/mappers/Address.xml"/>
+        <mapper resource = "mybatis/mappers/User.xml"/>
     </mappers>
 
 </configuration>

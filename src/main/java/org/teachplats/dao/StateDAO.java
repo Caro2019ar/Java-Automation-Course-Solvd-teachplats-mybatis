@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class StateDAO extends BaseDAO<State> implements IStateDAO<State> {
+public class StateDAO extends BaseDAO<State> implements IStateDAO {
 
     private final static Logger logger = LogManager.getLogger(StateDAO.class);
 

@@ -5,48 +5,50 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.teachplats.connection.SessionFactory;
 import org.teachplats.exception.ResourceNotFoundException;
+import org.teachplats.model.Address;
 import org.teachplats.model.City;
-
 
 import java.util.List;
 
-public class CityDAO implements ICityDAO {
-    private final static Logger logger = LogManager.getLogger(CityDAO.class);
-    private static City city;
+public class AddressDAO implements IAddressDAO {
+
+    private final static Logger logger = LogManager.getLogger(AddressDAO.class);
+
+    private static Address address;
+
     @Override
-    public void create(City city) {
+    public void create(Address address) {
         try (SqlSession sqlSession = new SessionFactory().sqlSessionFactoryBuild()) {
             try {
-                City city1 = new City(city.getName(), city.getState().getId());
-                sqlSession.insert("City.insertWithState",city1);
+                sqlSession.insert("Address.insert", address);
                 sqlSession.commit();
             } catch (Exception ex) {
                 logger.warn(ex.getMessage());
                 sqlSession.rollback();
             }
         }
-
     }
 
     @Override
-    public City getById(Long id) {
+    public Address getById(Long id) {
         try (SqlSession sqlSession = new SessionFactory().sqlSessionFactoryBuild()) {
             try {
-                city = sqlSession.selectOne("City.selectById", id);
+                address = sqlSession.selectOne("Address.selectById", id);
                 sqlSession.commit();
             } catch (Exception ex) {
                 logger.warn(ex.getMessage());
                 sqlSession.rollback();
             }
         }
-        return city;
+        return address;
     }
+
 
     @Override
     public void removeById(Long id) {
         try (SqlSession sqlSession = new SessionFactory().sqlSessionFactoryBuild()) {
             try {
-                sqlSession.delete("City.deleteById", id);
+                sqlSession.delete("Address.deleteById", id);
                 sqlSession.commit();
             } catch (Exception ex) {
                 logger.warn(ex.getMessage());
@@ -56,17 +58,17 @@ public class CityDAO implements ICityDAO {
     }
 
     @Override
-    public void update(City city) {
+    public void update(Address address) {
         try (SqlSession sqlSession = new SessionFactory().sqlSessionFactoryBuild()) {
             try {
-                City cityUpdate = (City) sqlSession.selectOne("City.selectById", city.getId());
-                if (cityUpdate == null) {
-                    logger.warn("---------- cityUpdate: " + cityUpdate);
+                Address addressUpdate = (Address) sqlSession.selectOne("Address.selectById", address.getId());
+                if (addressUpdate == null) {
+                    logger.warn("---------- cityUpdate: " + addressUpdate);
                     throw new ResourceNotFoundException("Couldn't find this ID");
                 }
-                cityUpdate.setName(city.getName());
-                cityUpdate.setStateId(city.getStateId());
-                sqlSession.update("City.update", cityUpdate);
+                addressUpdate.setNumber(address.getNumber());
+                addressUpdate.setStreet(address.getStreet());
+                sqlSession.update("Address.update", addressUpdate);
                 sqlSession.commit();
             } catch (Exception ex) {
                 logger.warn(ex.getMessage() + " Could not update this resource");
@@ -76,17 +78,17 @@ public class CityDAO implements ICityDAO {
     }
 
     @Override
-    public List<City> getAll() {
-        List<City> cityList = null;
+    public List<Address> getAll() {
+        List<Address> addressList = null;
         try (SqlSession sqlSession = new SessionFactory().sqlSessionFactoryBuild()) {
             try {
-                cityList = sqlSession.selectList("City.getAll");
+                addressList = sqlSession.selectList("Address.getAll");
                 sqlSession.commit();
             } catch (Exception ex) {
                 logger.warn(ex.getMessage());
                 sqlSession.rollback();
             }
         }
-        return cityList;
+        return addressList;
     }
 }

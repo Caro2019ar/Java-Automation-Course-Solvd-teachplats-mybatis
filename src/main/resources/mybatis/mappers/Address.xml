@@ -1,0 +1,47 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="Address">
+    <insert id="insert" parameterType="Address">
+        INSERT INTO Addresses (street,number,city_id) VALUES (#{street}, #{number}, #{cityId});
+
+        <selectKey resultType="Long" order="AFTER">
+            select last_insert_id() as id
+        </selectKey>
+    </insert>
+
+
+    <resultMap id="result" type="Address">
+        <id property="id" column="ID"/>
+        <result property="number" column="number"/>
+        <result property="street" column="street"/>
+        <result property="cityId" column="city_id"/>
+
+    </resultMap>
+    <select id="selectById" resultMap="result" parameterType="Long">
+        SELECT * FROM Addresses WHERE ID = #{id};
+    </select>
+    <select id="selectByCityID" resultMap="result" parameterType="Long">
+        SELECT * FROM Addresses WHERE city_id = #{cityId};
+    </select>
+    <select id="getAll" resultMap="result">
+        SELECT * FROM Addresses;
+    </select>
+
+    <update id="update" parameterType="Address">
+        UPDATE Cities
+        <choose>
+            <when test="name != null">
+                SET street = #{street}, number = #{number}, city_id= #{cityId} WHERE ID = #{id};
+            </when>
+            <when test="id != null">
+                WHERE ID = #{id};
+            </when>
+        </choose>
+    </update>
+
+    <delete id="deleteById" parameterType="Long">
+        DELETE from Addresses WHERE ID = #{id};
+    </delete>
+</mapper>
