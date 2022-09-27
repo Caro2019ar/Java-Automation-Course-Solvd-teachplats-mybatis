@@ -11,7 +11,9 @@ public class User {
  private Address address=new Address();
  private Date dateOfBirth;
 
+ public User() {
 
+ }
  public User(String firstName, String lastName, String phone, String email,  Long addressId, Date dateOfBirth) {
   this.firstName = firstName;
   this.lastName = lastName;
@@ -31,6 +33,8 @@ public class User {
   this.address.setId(addressId);
   this.dateOfBirth = dateOfBirth;
  }
+
+
 
  public Long getId() {
   return id;

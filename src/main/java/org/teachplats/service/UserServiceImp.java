@@ -6,7 +6,7 @@ import org.teachplats.model.User;
 
 import java.util.List;
 
-public class UserServiceImp implements IUserService{
+public class UserServiceImp implements IUserService {
     private UserDAO userDAO = new UserDAO();
 
     @Override
@@ -30,7 +30,7 @@ public class UserServiceImp implements IUserService{
     }
 
     @Override
-    public void deleteById(Long aLong) {
-
+    public void deleteById(Long id) {
+        userDAO.removeById(id);
     }
 }

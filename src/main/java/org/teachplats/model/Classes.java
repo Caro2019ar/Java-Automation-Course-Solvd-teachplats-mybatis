@@ -1,13 +1,21 @@
 package org.teachplats.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Date;
 
 public class Classes {
-
+    @JsonProperty
     private Long id;
+    @JsonProperty
     private String description;
+    @JsonProperty("date")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
     private Date clasDate;
+    @JsonProperty("remote_present_id")
     private Long remotePresentId;
+    @JsonProperty("course_id")
     private Long courseId;
 
     public Classes() {

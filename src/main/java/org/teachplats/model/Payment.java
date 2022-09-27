@@ -1,21 +1,30 @@
 package org.teachplats.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Date;
 
-public class Payment {
-    private Long id;
-    private Date payDate;
-    private Double value;
 
-    private PaymentMethod paymentMethod;
+public class Payment {
+   @JsonProperty
+    private Long id;
+    @JsonProperty("date")
+    @JsonFormat (shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
+    private java.util.Date payDate;
+    @JsonProperty
+    private Double value;
+    @JsonIgnore
+    private PaymentMethod paymentMethod=new PaymentMethod();
 
     public Payment() {
     }
 
-    public Payment(Date payDate, Double value, PaymentMethod paymentMethod) {
+    public Payment(Date payDate, Double value,  Long paymethodId) {
         this.payDate = payDate;
         this.value = value;
-        this.paymentMethod = paymentMethod;
+        this.paymentMethod.setId(paymethodId);
     }
 
     public Payment(Long id, Date payDate, Double value, Long paymethodId) {
