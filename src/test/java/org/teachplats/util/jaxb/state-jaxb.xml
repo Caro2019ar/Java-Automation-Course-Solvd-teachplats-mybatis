@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<state id="4">
+    <name>Entre Rios</name>
+    <city>
+        <id>2</id>
+        <name>Concordia</name>
+    </city>
+    <city>
+        <id>1</id>
+        <name>Gualeguay</name>
+    </city>
+    <countryId>3</countryId>
+</state>

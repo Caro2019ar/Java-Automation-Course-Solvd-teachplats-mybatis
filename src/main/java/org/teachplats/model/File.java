@@ -1,15 +1,34 @@
 package org.teachplats.model;
 
+import javax.xml.bind.annotation.*;
+import java.util.ArrayList;
 import java.util.Date;
-
+import java.util.List;
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name="file")
+@XmlType(propOrder = { "id", "description", "size", "fileDate", "filetype" })
 public class File {
+    @XmlAttribute
     private Long id;
+    @XmlElement
     private String description;
+    @XmlElement
     private Double size;
+    @XmlElement
     private Date fileDate;
-    private Long filetypeId;
+    @XmlElement
+    private Filetype filetype = new Filetype();
+
 
     public File() {
+    }
+
+    public File(String description, Double size, Date fileDate, Long filetypeId) {
+        this.description = description;
+        this.size = size;
+        this.fileDate = fileDate;
+        this.filetype.setId(filetypeId);
+
     }
 
     public File(Long id, String description, Double size, Date fileDate, Long filetypeId) {
@@ -17,7 +36,8 @@ public class File {
         this.description = description;
         this.size = size;
         this.fileDate = fileDate;
-        this.filetypeId = filetypeId;
+        this.filetype.setId(filetypeId);
+
     }
 
     public Long getId() {
@@ -52,22 +72,32 @@ public class File {
         this.fileDate = fileDate;
     }
 
-    public Long getFiletypeId() {
-        return filetypeId;
+    public Filetype getFiletype() {
+        return filetype;
     }
 
-    public void setFiletypeId(Long filetypeId) {
-        this.filetypeId = filetypeId;
+    public Long getFileTypeId() {
+        return this.filetype.getId();
     }
+    public void setFileTypeId(Long fileTypeId) {
+         this.filetype.setId(fileTypeId);
+    }
+
+    public void setFiletype(Filetype filetype) {
+        this.filetype = filetype;
+    }
+
+
 
     @Override
     public String toString() {
-        return "File{" +
-                "id=" + id +
-                ", description='" + description + '\'' +
-                ", size=" + size +
-                ", fileDate=" + fileDate +
-                ", filetypeId=" + filetypeId +
-                '}';
+        final StringBuilder sb = new StringBuilder("File{");
+        sb.append("id=").append(id);
+        sb.append(", description='").append(description).append('\'');
+        sb.append(", size=").append(size);
+        sb.append(", fileDate=").append(fileDate);
+        sb.append(", filetype=").append(filetype);
+        sb.append('}');
+        return sb.toString();
     }
 }

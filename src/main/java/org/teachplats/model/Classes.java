@@ -3,7 +3,10 @@ package org.teachplats.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Classes {
     @JsonProperty
@@ -12,23 +15,31 @@ public class Classes {
     private String description;
     @JsonProperty("date")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
-    private Date clasDate;
-    @JsonProperty("remote_present_id")
-    private Long remotePresentId;
-    @JsonProperty("course_id")
-    private Long courseId;
+    private LocalDate clasDate;
+   //@JsonProperty("remote_present_id")
+    private RemotePresent remotePresent = new RemotePresent();
+    //@JsonProperty("course_id")
+    private Course course=new Course();
+    private List<File> fileList;
 
     public Classes() {
     }
 
-    public Classes(Long id, String description, Date clasDate, Long remotePresentId, Long courseId) {
+    public Classes(String description, LocalDate clasDate, Long remotePresentId, Long courseId) {
+        this.description = description;
+        this.clasDate = clasDate;
+        this.remotePresent.setId(remotePresentId);
+        this.course.setId(courseId);
+        this.fileList = new ArrayList<>();
+    }
+    public Classes(Long id, String description, LocalDate clasDate, Long remotePresentId, Long courseId) {
         this.id = id;
         this.description = description;
         this.clasDate = clasDate;
-        this.remotePresentId = remotePresentId;
-        this.courseId = courseId;
+        this.remotePresent.setId(remotePresentId);
+        this.course.setId(courseId);
+        this.fileList = new ArrayList<>();
     }
-
     public Long getId() {
         return id;
     }
@@ -45,38 +56,39 @@ public class Classes {
         this.description = description;
     }
 
-    public Date getClasDate() {
+    public LocalDate getClasDate() {
         return clasDate;
     }
 
-    public void setClasDate(Date clasDate) {
+    public void setClasDate(LocalDate clasDate) {
         this.clasDate = clasDate;
     }
 
-    public Long getRemotePresentId() {
-        return remotePresentId;
+    public RemotePresent getRemotePresent() {
+        return remotePresent;
     }
 
-    public void setRemotePresentId(Long remotePresentId) {
-        this.remotePresentId = remotePresentId;
+    public void setRemotePresent(RemotePresent remotePresent) {
+        this.remotePresent = remotePresent;
     }
 
-    public Long getCourseId() {
-        return courseId;
+    public Course getCourse() {
+        return course;
     }
 
-    public void setCourseId(Long courseId) {
-        this.courseId = courseId;
+    public void setCourse(Course course) {
+        this.course = course;
     }
 
     @Override
     public String toString() {
-        return "Classes{" +
-                "id=" + id +
-                ", description='" + description + '\'' +
-                ", clasDate=" + clasDate +
-                ", remotePresentId=" + remotePresentId +
-                ", courseId=" + courseId +
-                '}';
+        final StringBuilder sb = new StringBuilder("Classes{");
+        sb.append("id=").append(id);
+        sb.append(", description='").append(description).append('\'');
+        sb.append(", clasDate=").append(clasDate);
+        sb.append(", remotePresent=").append(remotePresent);
+        sb.append(", course=").append(course);
+        sb.append('}');
+        return sb.toString();
     }
 }

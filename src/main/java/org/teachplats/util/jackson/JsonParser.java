@@ -12,16 +12,16 @@ import java.util.TimeZone;
 
 public abstract class JsonParser {
 
-    protected static Date parseDateSimpleFormat(String dateString) throws ParseException {
-        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
+    public static Date parseDateSimpleFormat(String dateString) throws ParseException {
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy hh:mm");
         df.setTimeZone(TimeZone.getTimeZone("UTC"));
         Date dateParsed = df.parse(dateString);
         return dateParsed;
     }
 
-    protected static void parseJavaInJSON(Object object, String path) throws IOException {
+    public static void parseJavaInJSON(Object object, String path) throws IOException {
         File file = new File(path);
-        file.createNewFile();
+        //file.createNewFile();
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.writeValue(file, object);
     }

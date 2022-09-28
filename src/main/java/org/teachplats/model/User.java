@@ -1,6 +1,7 @@
 package org.teachplats.model;
 
 import java.util.Date;
+import java.util.List;
 
 public class User {
  private Long id;
@@ -10,6 +11,7 @@ public class User {
  private String email;
  private Address address=new Address();
  private Date dateOfBirth;
+ private List<Course> courseList;
 
  public User() {
 

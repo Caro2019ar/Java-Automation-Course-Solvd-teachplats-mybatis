@@ -1,10 +1,21 @@
 package org.teachplats.model;
 
+import javax.xml.bind.annotation.*;
+
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "filetype")
+@XmlType(propOrder = {"id", "description"})
 public class Filetype {
- private Long id;
- private String description;
+    @XmlAttribute
+    private Long id;
+    @XmlElement
+    private String description;
 
     public Filetype() {
+    }
+
+    public Filetype(String description) {
+        this.description = description;
     }
 
     public Filetype(Long id, String description) {

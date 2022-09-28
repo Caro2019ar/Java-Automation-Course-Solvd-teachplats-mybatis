@@ -1,5 +1,7 @@
 package org.teachplats.model;
 
+import javax.xml.bind.annotation.XmlTransient;
+
 public class City {
     private Long id;
     private String name;
@@ -42,6 +44,8 @@ public class City {
         return this.state.getId();
     }
 
+    //Tem que colocar Transient aqui em City p/ nao gerar o stateID no JaxbStateTest
+    @XmlTransient
     public void setStateId(Long stateId) {
         this.state.setId(stateId);
     }
@@ -49,7 +53,8 @@ public class City {
     public State getState() {
         return state;
     }
-
+    //Tem que colocar Transient aqui em City p/ nao gerar o stateID no JaxbStateTest
+    @XmlTransient
     public void setState(State state) {
         this.state = state;
     }

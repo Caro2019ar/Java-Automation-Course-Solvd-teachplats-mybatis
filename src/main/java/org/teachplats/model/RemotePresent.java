@@ -1,17 +1,17 @@
 package org.teachplats.model;
 
-import jdk.nashorn.internal.runtime.regexp.joni.ast.StringNode;
+
 
 public class RemotePresent {
     private Long id;
-    private String description;
+    private RemotePresentEnum remOrPres;
 
     public RemotePresent() {
     }
 
-    public RemotePresent(Long id, String description) {
+    public RemotePresent(Long id, RemotePresentEnum remOrPres) {
         this.id = id;
-        this.description = description;
+        this.remOrPres = remOrPres;
     }
 
     public Long getId() {
@@ -23,18 +23,18 @@ public class RemotePresent {
     }
 
     public String getDescription() {
-        return description;
+        return remOrPres.name();
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public RemotePresentEnum getRemOrPres() {
+        return remOrPres;
     }
 
     @Override
     public String toString() {
         return "RemotePresent{" +
                 "id=" + id +
-                ", description='" + description + '\'' +
+                ", type of class='" + remOrPres.name() + '\'' +
                 '}';
     }
 }

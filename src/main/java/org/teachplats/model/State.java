@@ -2,17 +2,25 @@ package org.teachplats.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import javax.xml.bind.annotation.*;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name="state")
+//@XmlType(propOrder = { "id", "name", "countryId", "city"})
 public class State {
+    @XmlAttribute
     private Long id;
+    @XmlElement
     private String name;
    // @JsonIgnore
     //private Long countryId;
     //---Tem que inicializar o atributo ou MyBatis reclama de getters/setters
+    @XmlTransient
     private Country country=new Country();
+    @XmlElement(name="city")
     private Set<City> citySet;
 
     public State() {
@@ -27,7 +35,7 @@ public class State {
     public State(String name, Long idFromCountry) {
         this.name = name;
         //this.countryId =idFromCountry;
-        this.country.setId(idFromCountry);
+        setCountryId(idFromCountry);
         this.citySet=new HashSet<>();
     }
 
@@ -35,7 +43,7 @@ public class State {
         this.id = id;
         this.name = name;
         //this.countryId =idFromCountry;
-        this.country.setId(idFromCountry);
+        setCountryId(idFromCountry);
         this.citySet=new HashSet<>();
     }
 
@@ -69,7 +77,7 @@ public class State {
     public void setCountry(Country country) {
         this.country = country;
     }
-
+    @XmlElement(name="countryId")
     public void setCountryId(Long id) {
         this.country.setId(id);
     }

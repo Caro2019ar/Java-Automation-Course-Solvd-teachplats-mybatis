@@ -1,19 +1,24 @@
 package org.teachplats.model;
 
+import java.util.List;
+
 public class Course {
     private Long id;
     private String description;
     private String version;
-    private Long instrumentId;
+    private Instrument instrument;
+    private List<User> userList;
+    private List<Classes> classesList;
+    private List<Evaluation> evaluationList;
 
     public Course() {
     }
 
-    public Course(Long id, String description, String version, Long instrumentId) {
+    public Course(Long id, String description, String version, Instrument instrument) {
         this.id = id;
         this.description = description;
         this.version = version;
-        this.instrumentId = instrumentId;
+        this.instrument = instrument;
     }
 
     public Long getId() {
@@ -40,21 +45,22 @@ public class Course {
         this.version = version;
     }
 
-    public Long getInstrumentId() {
-        return instrumentId;
+    public Instrument getinstrument() {
+        return instrument;
     }
 
-    public void setInstrumentId(Long instrumentId) {
-        this.instrumentId = instrumentId;
+    public void setinstrument(Instrument instrument) {
+        this.instrument = instrument;
     }
 
     @Override
     public String toString() {
-        return "Course{" +
-                "id=" + id +
-                ", description='" + description + '\'' +
-                ", version='" + version + '\'' +
-                ", instrumentId=" + instrumentId +
-                '}';
+        final StringBuilder sb = new StringBuilder("Course{");
+        sb.append("id=").append(id);
+        sb.append(", description='").append(description).append('\'');
+        sb.append(", version='").append(version).append('\'');
+        sb.append(", instrument=").append(instrument);
+        sb.append('}');
+        return sb.toString();
     }
 }

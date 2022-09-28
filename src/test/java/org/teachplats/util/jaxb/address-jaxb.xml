@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<address id="1">
+    <street>Calle St.Tucuman</street>
+    <number>34A</number>
+    <cityId>2</cityId>
+</address>

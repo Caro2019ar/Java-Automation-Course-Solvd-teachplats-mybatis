@@ -1,9 +1,18 @@
 package org.teachplats.model;
 
+import javax.xml.bind.annotation.*;
+
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "address")
+@XmlType(propOrder = {"id", "street","number","cityId"})
 public class Address {
+    @XmlAttribute
     private Long id;
+    @XmlElement
     private String street;
+    @XmlElement
     private String number;
+    @XmlTransient
     private City city = new City();
 
     public Address() {
@@ -49,7 +58,7 @@ public class Address {
     public Long getCityId() {
         return this.city.getId();
     }
-
+    @XmlElement(name="cityId")
     public void setCityId(Long cityId) {
         this.city.setId(cityId);
     }

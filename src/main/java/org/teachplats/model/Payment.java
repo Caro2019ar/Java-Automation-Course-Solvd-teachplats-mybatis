@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Date;
 
 
-public class Payment {
+public class   Payment {
    @JsonProperty
     private Long id;
     @JsonProperty("date")

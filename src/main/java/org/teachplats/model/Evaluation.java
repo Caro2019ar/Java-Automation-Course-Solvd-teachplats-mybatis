@@ -4,6 +4,8 @@ public class Evaluation {
     private Long id;
     private String description;
     private Float score;
+    private Course course;
+
 
     public Evaluation() {
     }
