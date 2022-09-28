@@ -30,7 +30,7 @@
 
     <mappers>
         <mapper resource = "mybatis/mappers/Country.xml"/>
-<!--        <mapper resource = "mybatis/mappers/State.xml"/>-->
+       <mapper resource = "mybatis/mappers/State.xml"/>
         <mapper resource = "mybatis/mappers/City.xml"/>
         <mapper resource = "mybatis/mappers/Address.xml"/>
         <mapper resource = "mybatis/mappers/User.xml"/>

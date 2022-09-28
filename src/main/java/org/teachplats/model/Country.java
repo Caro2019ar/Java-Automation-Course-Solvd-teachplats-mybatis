@@ -1,23 +1,24 @@
 package org.teachplats.model;
 
+import javax.xml.bind.annotation.*;
 import java.util.HashSet;
 
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name="country")
+@XmlType(propOrder = { "id", "name", "stateSet" })
 public class Country {
+    @XmlAttribute
     private Long id;
+    @XmlElement
     private String name;
+    @XmlElement
     private HashSet<State> stateSet;
 
 
     public Country() {
     }
 
-    public HashSet<State> getStateSet() {
-        return stateSet;
-    }
 
-    public void setStateSet(HashSet<State> stateSet) {
-        this.stateSet = stateSet;
-    }
 
     public Country(String name) {
         this.name = name;
@@ -59,6 +60,13 @@ public class Country {
     public void removeStateToCoutrySet(State state) {
         stateSet.remove(state);
         state.setCountry(null);
+    }
+    public HashSet<State> getStateSet() {
+        return stateSet;
+    }
+
+    public void setStateSet(HashSet<State> stateSet) {
+        this.stateSet = stateSet;
     }
 
     @Override

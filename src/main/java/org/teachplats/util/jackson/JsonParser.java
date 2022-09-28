@@ -1,4 +1,4 @@
-package org.teachplats.util;
+package org.teachplats.util.jackson;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.teachplats.model.Payment;

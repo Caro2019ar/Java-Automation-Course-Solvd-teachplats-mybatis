@@ -3,6 +3,7 @@
 
 <mapper namespace = "org.teachplats.dao.IStateDAO">
 <!-- ========================= Usei Annotations para State para testar=========================-->
+<!-- ============ obs>  Deixar a linha de namespace acima ou dá erro de build ============-->
 <!--    <insert id = "insert" parameterType = "State">-->
 <!--        INSERT INTO States (NAME) VALUES (#{name});-->
 

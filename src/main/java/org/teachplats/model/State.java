@@ -9,8 +9,8 @@ import java.util.Set;
 public class State {
     private Long id;
     private String name;
-    @JsonIgnore
-    private Long countryId;
+   // @JsonIgnore
+    //private Long countryId;
     //---Tem que inicializar o atributo ou MyBatis reclama de getters/setters
     private Country country=new Country();
     private Set<City> citySet;
@@ -20,30 +20,30 @@ public class State {
 
     public State(String name) {
         this.name = name;
-        this.countryId= this.country.getId();
+        //this.countryId= this.country.getId();
         this.citySet=new HashSet<>();
     }
 
     public State(String name, Long idFromCountry) {
         this.name = name;
-        this.countryId =idFromCountry;
-        this.country.setId(countryId);
+        //this.countryId =idFromCountry;
+        this.country.setId(idFromCountry);
         this.citySet=new HashSet<>();
     }
 
     public State(Long id, String name,Long idFromCountry) {
         this.id = id;
         this.name = name;
-        this.countryId =idFromCountry;
-        this.country.setId(countryId);
+        //this.countryId =idFromCountry;
+        this.country.setId(idFromCountry);
         this.citySet=new HashSet<>();
     }
 
     public State(Long id, String name,Long idFromCountry, HashSet<City> citySet) {
         this.id = id;
         this.name = name;
-        this.countryId =idFromCountry;
-        this.country.setId(countryId);
+        //this.countryId =idFromCountry;
+        this.country.setId(idFromCountry);
         this.citySet=citySet;
     }
     public Long getId() {
@@ -70,12 +70,12 @@ public class State {
         this.country = country;
     }
 
-    public void setCountryId(Long countryId) {
-        this.countryId = countryId;
+    public void setCountryId(Long id) {
+        this.country.setId(id);
     }
 
     public Long getCountryId() {
-        return countryId;
+        return this.country.getId();
     }
 
     public void addCityToStateSet(City city) {
@@ -87,12 +87,15 @@ public class State {
         citySet.remove(city);
         city.setState(null);
     }
+
     @Override
     public String toString() {
-        return "State{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", country=" + country +
-                '}';
+        final StringBuilder sb = new StringBuilder("State{");
+        sb.append("id=").append(id);
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", country=").append(country);
+        sb.append(", citySet=").append(citySet);
+        sb.append('}');
+        return sb.toString();
     }
 }

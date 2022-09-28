@@ -5,6 +5,7 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.teachplats.dao.StateDAO;
 import org.teachplats.model.Country;
+import org.teachplats.model.State;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
@@ -13,6 +14,7 @@ import org.testng.asserts.SoftAssert;
 
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 
@@ -23,6 +25,7 @@ public class CountryTest {
     private static Long idToBeSearched = null;
     private static Long idToBeUpdated= null;
     private static Country country = null;
+    HashSet<State> stateHashSet = null;
 
     @AfterTest
     public void cleanUp() {
@@ -35,6 +38,9 @@ public class CountryTest {
         idToBeSearched = 3l;
         idToBeRemoved = 29l;
         idToBeUpdated= 7l;
+        stateHashSet = new HashSet<State>();
+        stateHashSet.add(new State(7l,"Bahia",2l));
+        stateHashSet.add(new State(8l,"Blanca",2l));
     }
 
     @Test
@@ -79,13 +85,14 @@ public class CountryTest {
 
     @Test(dependsOnMethods = "getByIdTest")
     public void updateTest() {
-        countryServiceImp.update(new Country(idToBeUpdated, "Colombia"));
+        countryServiceImp.update(new Country(idToBeUpdated, "Colombia",stateHashSet));
         Assert.assertEquals(countryServiceImp.searchById(idToBeUpdated).getName(), "Colombia");
     }
 
     @Test (dependsOnMethods = "removeByIdTest")
     public void updateNonExistIDTest() {
-        countryServiceImp.update(new Country(idToBeRemoved, "UpCountry"));
+        countryServiceImp.update(new Country(idToBeRemoved, "UpCountry",stateHashSet
+        ));
         Assert.assertNull(countryServiceImp.searchById(idToBeRemoved));
     }
 
